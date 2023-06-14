@@ -20,6 +20,7 @@ class QRCodeGenerator:
         module_color=(50, 50, 50),
         pattern_color=(0, 0, 0),
         transform_amount=2,
+        code_scale=0.85,
     ):
         self.input_string = input_string
         self.version = version
@@ -31,6 +32,7 @@ class QRCodeGenerator:
         self.module_color = module_color
         self.pattern_color = pattern_color
         self.transform_amount = transform_amount
+        self.code_scale = code_scale
         self.qrcode = None
         self.matrix = None
         self.pattern_mask = None
@@ -161,7 +163,6 @@ class QRCodeGenerator:
         return [top_left, top_right, bottom_right, bottom_left]
 
     def _apply_perspective_transform(self, image: Image):
-        # Load the image using PIL
         width, height = image.size
 
         # Define the source and destination points for the perspective transformation
@@ -247,7 +248,7 @@ class QRCodeGenerator:
 
         # Scale down the image
         scaled_down_image = ImageOps.scale(
-            image, (self.image_size / image.width) * 0.75
+            image, (self.image_size / image.width) * self.code_scale
         )
         final_image = Image.new(
             "RGB", (self.image_size, self.image_size), color=self.bg_color

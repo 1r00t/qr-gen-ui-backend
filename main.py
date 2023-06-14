@@ -6,10 +6,17 @@ from time import time_ns
 from PIL import Image
 from io import BytesIO
 
-from payload.base import PayloadTxt2Img
+# from payload.base import PayloadTxt2Img
 from payload.controlnet import ControlNetArgs
 from qrgen.generator import QRCodeGenerator
 
+
+from payload.base import Payload
+from payload.templates import img2img
+
+x = Payload(template=img2img)
+
+exit(0)
 
 # generate QR-Code
 generator = QRCodeGenerator(

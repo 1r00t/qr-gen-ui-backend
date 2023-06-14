@@ -1,6 +1,3 @@
-import json
-
-
 class ControlNetArgs:
     input_image: str = ""
     module: str | None = None

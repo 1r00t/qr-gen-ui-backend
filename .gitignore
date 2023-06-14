@@ -2,3 +2,5 @@ env/
 output/*
 __pycache__/
 .vscode/
+tile_qr.png
+brightness_qr.png
